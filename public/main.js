@@ -1,0 +1,1 @@
+(()=>{"use strict";var n=function(n,e){var t=document.createElement("ul");t.className="menu";var o="";return["Main","About","Portfolio"].forEach((function(n){o+="<li>"+n+"</li>"})),t.innerHTML=o,t}();document.body.appendChild(n)})();
