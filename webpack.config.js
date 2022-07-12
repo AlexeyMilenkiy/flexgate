@@ -1,89 +1,49 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { merge } = require("webpack-merge");
 const pug = require("./webpack/pug");
 const devServer = require("./webpack/devserver");
-const sass = require('./webpack/sass');
-const css = require('./webpack/css')
+const sass = require("./webpack/sass");
+const css = require("./webpack/css");
+// const images = require("./webpack/images");
 
 const PATHS = {
   source: path.join(__dirname, "source"),
   build: path.join(__dirname, "public"),
 };
 
-const common = merge([
+const productionConfig = merge([
   {
-    // mode: "production",
     entry: {
-      index: PATHS.source + "/pages/index/index.js",
-      // 'blog' : PATHS.source + "/pages/blog/blog.js",
+      index: PATHS.source + "/app.js",
     },
     output: {
       path: PATHS.build,
-        filename: "[name].js",
-    //   filename: "bundle.js",
-    //   publicPath: "/",
+      filename: "bundle.[chunkhash].js",
     },
     plugins: [
       new HtmlWebpackPlugin({
         filename: "index.html",
         chunks: ["index"],
-        template: PATHS.source + "/pages/index/index.pug",
+        template: PATHS.source + "/index.pug",
       }),
-      // new HtmlWebpackPlugin({
-      //     filename: "blog.html",
-      //     chunks: ["blog"],
-      //     template: PATHS.source + "/pages/blog/blog.pug",
-      //   }),
-      // new webpack.HotModuleReplacementPlugin(),
+      new CleanWebpackPlugin(),
     ],
   },
   pug(),
+  sass(),
+  css(),
+  //   images(),
 ]);
 
-// const common = {
-//   mode: "production",
-//   entry: {
-//     index: PATHS.source + "/pages/index/index.js",
-//     // 'blog' : PATHS.source + "/pages/blog/blog.js",
-//   },
-//   output: {
-//     path: PATHS.build,
-//     filename: "[name].js",
-//   },
-//   plugins: [
-//     new HtmlWebpackPlugin({
-//       filename: "index.html",
-//       chunks: ["index"],
-//       template: PATHS.source + "/pages/index/index.pug",
-//     }),
-//     // new HtmlWebpackPlugin({
-//     //     filename: "blog.html",
-//     //     chunks: ["blog"],
-//     //     template: PATHS.source + "/pages/blog/blog.pug",
-//     //   }),
-//     // new webpack.HotModuleReplacementPlugin(),
-//   ],
-//   pug()
-// };
-
-const developmentConfig = {
-  target: "web",
-  //   mode: "development",
-};
+const developmentConfig = merge([productionConfig, devServer(), sass(), css()]);
 
 module.exports = function (env, argv) {
-  // console.log('env', env)
-  // console.log('argv.nodeEnv', argv.nodeEnv);
   if (argv.nodeEnv === "production") {
-    return common;
+    return productionConfig;
   }
   if (argv.nodeEnv === "development") {
-    return merge([
-        common, 
-        devServer(), 
-        sass(),
-        css(),
-    ]);
+    return developmentConfig;
   }
 };
