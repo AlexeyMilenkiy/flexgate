@@ -1,4 +1,5 @@
-import './index.scss'
+import './index.scss';
+import 'normalize.css';
 
 import createMenu from '../menu/menu';
 
