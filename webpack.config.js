@@ -6,19 +6,58 @@ const PATHS = {
   build: path.join(__dirname, "public"),
 };
 
-module.exports = {
-  entry: PATHS.source + "/index.js",
+const common = {
+  mode: "production",
+  entry: {
+    index: PATHS.source + "/pages/index/index.js",
+    // 'blog' : PATHS.source + "/pages/blog/blog.js",
+  },
   output: {
     path: PATHS.build,
     filename: "[name].js",
   },
-//   devServer: {
-//     inline: true,
-//     port: 3000,
-//   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "Webpack app...",
+      filename: "index.html",
+      chunks: ["index"],
+      template: PATHS.source + "/pages/index/index.pug",
     }),
+    // new HtmlWebpackPlugin({
+    //     filename: "blog.html",
+    //     chunks: ["blog"],
+    //     template: PATHS.source + "/pages/blog/blog.pug",
+    //   }),
   ],
+  module: {
+    rules: [
+      {
+        test: /\.pug$/,
+        loader: "pug-loader",
+        options: {
+          pretty: true,
+        },
+      },
+    ],
+  },
+};
+
+const developmentConfig = {
+  mode: "development",
+  devServer: {
+    // stats: 'errors-only',
+    // inline: true,
+    port: 9000,
+  },
+};
+
+module.exports = function (env, argv) {
+    console.log('env', env)
+    console.log('argv.nodeEnv', argv.nodeEnv);
+  if (argv.nodeEnv === "production") {
+    console.log(env);
+    return common;
+  }
+  if (argv.nodeEnv === "development") {
+    return Object.assign({}, common, developmentConfig);
+  }
 };
