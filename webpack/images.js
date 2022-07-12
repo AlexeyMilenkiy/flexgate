@@ -3,10 +3,10 @@ module.exports = () => {
     module: {
       rules: [
         {
-          test: /\.(png|jpe?g|gif|svg)$/i,
+          test: /\.(png|jpe?g|gif)$/i,
           loader: "file-loader",
           options: {
-            name: "images/[name].[ext]",
+            name: "[name].[ext]",
           },
         },
       ],

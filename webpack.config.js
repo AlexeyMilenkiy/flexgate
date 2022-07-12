@@ -6,7 +6,7 @@ const pug = require("./webpack/pug");
 const devServer = require("./webpack/devserver");
 const sass = require("./webpack/sass");
 const css = require("./webpack/css");
-// const images = require("./webpack/images");
+const images = require("./webpack/images");
 
 const PATHS = {
   source: path.join(__dirname, "source"),
@@ -34,10 +34,10 @@ const productionConfig = merge([
   pug(),
   sass(),
   css(),
-  //   images(),
+  images(),
 ]);
 
-const developmentConfig = merge([productionConfig, devServer(), sass(), css()]);
+const developmentConfig = merge([productionConfig, devServer()]);
 
 module.exports = function (env, argv) {
   if (argv.nodeEnv === "production") {
