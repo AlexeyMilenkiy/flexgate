@@ -3,8 +3,9 @@ module.exports = () => {
     module: {
       rules: [
         {
-          test: /\.(png|jpe?g|gif)$/i,
+          test: /\.(svg|png|jpg|jpeg|gif)$/i,
           loader: "file-loader",
+          // type: 'asset/resource',
           options: {
             name: "[name].[ext]",
           },

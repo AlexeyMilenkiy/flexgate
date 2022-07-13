@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { merge } = require("webpack-merge");
 const pug = require("./webpack/pug");
@@ -29,6 +30,9 @@ const productionConfig = merge([
         template: PATHS.source + "/index.pug",
       }),
       new CleanWebpackPlugin(),
+      new MiniCssExtractPlugin({
+        filename: "style.[chunkhash].css",
+      }),
     ],
   },
   pug(),
