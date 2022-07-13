@@ -3,11 +3,11 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { merge } = require("webpack-merge");
-const pug = require("./webpack/pug");
 const devServer = require("./webpack/devserver");
-const sass = require("./webpack/sass");
-const css = require("./webpack/css");
 const images = require("./webpack/images");
+const sass = require("./webpack/sass");
+const pug = require("./webpack/pug");
+const css = require("./webpack/css");
 
 const PATHS = {
   source: path.join(__dirname, "source"),
@@ -25,13 +25,13 @@ const productionConfig = merge([
     },
     plugins: [
       new HtmlWebpackPlugin({
-        filename: "index.html",
+        filename: "index.html", //Выходное имя файла
         chunks: ["index"],
         template: PATHS.source + "/index.pug",
       }),
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
-        filename: "style.[chunkhash].css",
+        filename: "style.[chunkhash].css",  //Выходное имя файла
       }),
     ],
   },
