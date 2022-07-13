@@ -41,7 +41,10 @@ const productionConfig = merge([
   images(),
 ]);
 
-const developmentConfig = merge([productionConfig, devServer()]);
+const developmentConfig = merge([
+    productionConfig, 
+    devServer()
+]);
 
 module.exports = function (env, argv) {
   if (argv.nodeEnv === "production") {

@@ -1,6 +1,6 @@
 import './style.scss';
-import './tailscale.png';
-import './arrow.svg';
+import './images/tailscale.png';
+import './images/arrow.svg';
 
 
 console.log('Hello...');
