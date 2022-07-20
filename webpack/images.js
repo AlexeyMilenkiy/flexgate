@@ -3,7 +3,7 @@ module.exports = () => {
     module: {
       rules: [
         {
-          test: /\.(svg|png|jpg|jpeg|gif)$/i,
+          test: /\.(svg|png|jpg|jpeg|gif|webp)$/i,
           loader: "file-loader",
           // type: 'asset/resource',
           options: {

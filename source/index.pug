@@ -1,77 +1,126 @@
 doctype html
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(http-equiv="X-UA-Compatible" content="IE=edge")
-        meta(name="viewport" content="width=device-width, initial-scale=1.0")
-        title Document
-    body 
-        div(class='wrapper')
-            header 
-                div(class='headerLeft')
-                    img(src="logitech-logo-white.png" alt="Logo")
-                div(class='headerNavbar')
-                    ul 
-                        li Home 
-                        li About 
-                        li Product 
-                        li Specification 
-            main
-                article  
-                    section(class='section sectionOne')
-                        div(class='navbarLeft')
-                            div(class='navbar')
-                                ul 
-                                    li(class='active')
-                                        div 
-                                    li 
-                                        div 
-                                    li 
-                                        div 
-                                    li 
-                                        div 
-                            div(class='verticalLine')
-                            div(class='scrollArrow')
-                                p Scroll 
-                                img(src="arrow-long.svg" alt="Arrow" height="50px")
-                        div(class='contentCenter')
-                            div(class='contentDescr')
-                                h1 Forge your firepower
-                                h2 All-new G604 for battle royale mastery, focus your skill a nd own every moment of the figth.
-                                p Маkе your weapons play harder in the configuration you deem fittest. Use the 15 programmable controls, LIGHTSPEED or Bluetooth® wireless, HERO 16K sensor, and 240 hour battery life to be the fastest gunslinger on the battlefield.
-                                button(class='bn5') Play Advanced
-                            div(class='contentImage')
-                                img(src="example.png" alt="")
-                        div(class='navbarRigth')
-                            div(class='verticalLine')
-                            div(class='navbar')
-                                ul 
-                                    li 
-                                        img(src="telephone.svg" alt="Call")
-                                    li 
-                                        img(src="telegram.svg" alt="Telegram")
-                                    li  
-                                        img(src="whatsapp.svg" alt="Whatsapp")
-                    section(class='section sectionTwo')
-                        div(class='navbarLeft')
-                            div(class='navbar')
-                                ul 
-                                    li(class='active')
-                                        div 
-                                    li 
-                                        div 
-                                    li 
-                                        div 
-                                    li 
-                                        div
-                            div(class='verticalLine')
-                        div(class='contentSectionTwo')
-                            div(class='contentImage')
-                                img(src="example-two.png" alt="")
-                                div(class='contentDescr')
-                                    h1 Make your play
-                                    p Маkе your weapons play harder in the configuration you deem fittest. Use the 15 programmable controls, LIGHTSPEED or Bluetooth® wireless, HERO 16K sensor, and 240 hour battery life to be the fastest gunslinger on the battlefield.
-                                    button(class='bn5')
-                aside 
-            footer 
-
+html(lang="ru")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Document
+    //- link(href="hystmodal.min.css")
+  body 
+    header 
+      include parts/header.pug
+    aside 
+      include parts/aside.pug 
+    main
+      article  
+        section(class='section section_one' id="element1")
+          div(class='section_content')
+            div(class='section_content_info')
+              h1 Forge your firepower
+              h2 All-new G604 for battle royale mastery, focus your skill a nd own every moment of the figth.
+              p Маkе your weapons play harder in the configuration you deem fittest. Use the 15 programmable controls, LIGHTSPEED or Bluetooth® wireless, HERO 16K sensor, and 240 hour battery life to be the fastest gunslinger on the battlefield.
+              button(class='bn5') Play Advanced
+            div(class='section_content_image')
+              img(src="example_one.png" alt="")
+          div(class='section_navbar_rigth')
+            div(class='vertical_line')
+            div(class='section_navbar')
+              ul 
+                li 
+                  img(src="telephone.svg" alt="Call")
+                li 
+                  img(src="telegram.svg" alt="Telegram")
+                li  
+                  img(src="whatsapp.svg" alt="Whatsapp")
+        section(class='section section_two' id="element2")
+          div(class='section_content')
+            div(class='section_content_image')
+              img(src="example_two.png" alt="")
+            div(class='section_content_info')
+              h1 Make your play
+              p Маkе your weapons play harder in the configuration you deem fittest. Use the 15 programmable controls, LIGHTSPEED or Bluetooth® wireless, HERO 16K sensor, and 240 hour battery life to be the fastest gunslinger on the battlefield.
+              button(class='bn5') Buy
+        section(class='section section_detalis' id="element3")
+          ul(class="slider")
+            li
+              img(
+                src="slider_00.png" 
+                width="250px"
+                height="250px"
+                alt="Google Maps"
+                loading="lazy"
+                )
+            li
+              img(
+                src="slider_01.png" 
+                width="250px"
+                height="250px"
+                alt="Google Maps"
+                loading="lazy"
+                )
+            li
+              img(
+                src="slider_02.png" 
+                width="250px"
+                height="250px"
+                alt="Google Maps"
+                loading="lazy"
+                )
+            li
+              img(
+                src="slider_03.png" 
+                width="250px"
+                height="250px"
+                alt="Google Maps"
+                loading="lazy"
+                )
+            li
+              img(
+                src="slider_04.png" 
+                width="250px"
+                height="250px"
+                alt="Google Maps"
+                loading="lazy"
+                )
+        section(class='section section_three' id="element4")
+          div(class='section_content')
+            ul 
+              li 
+                img(src="example_one.png" width="300px" alt="")
+                span(class="section_inline_dot_contur") 
+                  span(class="section_inline_dot")
+                dir(class="vertical_line")
+                div(class='section_content_info')
+                  h3 15 Programmable controls
+                  p Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, odit labore praesentium est voluptatum facere ducimus. Magni, soluta omnis ullam adipisci iure culpa dolore ipsam tempore sunt architecto expedita voluptas.
+              li 
+                img(src="example_one.png" width="300px" alt="")
+                span(class="section_inline_dot_contur") 
+                  span(class="section_inline_dot")
+                dir(class="vertical_line")
+                div(class='section_content_info') 
+                  h3 15 Programmable controls
+                  p Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, odit labore praesentium est voluptatum facere ducimus. Magni, soluta omnis ullam adipisci iure culpa dolore ipsam tempore sunt architecto expedita voluptas.
+              li 
+                img(src="example_one.png" width="300px" alt="")
+                span(class="section_inline_dot_contur") 
+                  span(class="section_inline_dot")
+                div(class="vertical_line")
+                div(class='section_content_info') 
+                  h3 15 Programmable controls
+                  p Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, odit labore praesentium est voluptatum facere ducimus. Magni, soluta omnis ullam adipisci iure culpa dolore ipsam tempore sunt architecto expedita voluptas.
+              li 
+                img(src="example_one.png" width="300px" alt="")
+                span(class="section_inline_dot_contur") 
+                  span(class="section_inline_dot")
+                div(class="vertical_line hide_line")
+                div(class='section_content_info') 
+                  h3 15 Programmable controls
+                  p Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, odit labore praesentium est voluptatum facere ducimus. Magni, soluta omnis ullam adipisci iure culpa dolore ipsam tempore sunt architecto expedita voluptas.
+              li(class="single_block")
+                button(class="bn5") Buy Now
+        section 
+          //- какие модели подходят и какой список услуг(это для SEO)
+        include parts/modal.pug
+    footer 
+      include parts/footer.pug

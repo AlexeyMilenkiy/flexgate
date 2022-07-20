@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CompressionPlugin = require("compression-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const { merge } = require("webpack-merge");
 const devServer = require("./webpack/devserver");
@@ -18,6 +19,10 @@ const productionConfig = merge([
   {
     entry: {
       index: PATHS.source + "/app.js",
+      modal: [
+        PATHS.source + '/scripts/hystmodal.min.js',
+        PATHS.source + '/scripts/modal.js'
+      ],
     },
     output: {
       path: PATHS.build,
@@ -25,13 +30,19 @@ const productionConfig = merge([
     },
     plugins: [
       new HtmlWebpackPlugin({
-        filename: "index.html", //Выходное имя файла
-        chunks: ["index"],
+        //Создаем страницу index.html
+        filename: "index.html",
+        chunks: ["modal", "index"],
         template: PATHS.source + "/index.pug",
+        inject: 'body',
       }),
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
-        filename: "style.[chunkhash].css",  //Выходное имя файла
+        filename: "style.[chunkhash].css", //Выходное имя файла
+      }),
+      new CompressionPlugin({
+        algorithm: "gzip",
+        test: /.js$|.css$/,
       }),
     ],
   },
@@ -41,10 +52,7 @@ const productionConfig = merge([
   images(),
 ]);
 
-const developmentConfig = merge([
-    productionConfig, 
-    devServer()
-]);
+const developmentConfig = merge([productionConfig, devServer()]);
 
 module.exports = function (env, argv) {
   if (argv.nodeEnv === "production") {
