@@ -20,8 +20,9 @@ const productionConfig = merge([
     entry: {
       index: PATHS.source + "/app.js",
       modal: [
-        PATHS.source + '/scripts/hystmodal.min.js',
-        PATHS.source + '/scripts/modal.js'
+        PATHS.source + "/scripts/hystmodal.min.js",
+        PATHS.source + "/scripts/modal.js",
+        PATHS.source + "/scripts/tg.js",
       ],
     },
     output: {
@@ -34,7 +35,7 @@ const productionConfig = merge([
         filename: "index.html",
         chunks: ["modal", "index"],
         template: PATHS.source + "/index.pug",
-        inject: 'body',
+        inject: "body",
       }),
       new CleanWebpackPlugin(),
       new MiniCssExtractPlugin({
