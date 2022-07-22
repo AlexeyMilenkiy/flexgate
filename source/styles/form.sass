@@ -22,10 +22,12 @@
     box-shadow: 0 15px 25px rgba(0,0,0,.6)
     border-radius: 10px
     h2
-        margin: 0 0 30px
+        margin: 0 0 35px
         padding: 0
-        color: #fff
+        // color: #03e9f4
         text-align: center
+        text-transform: uppercase
+        font-weight: 400
     .user_box
         position: relative
         input
@@ -53,7 +55,8 @@
             left: 0
             color: #03e9f4
             font-size: 12px
-    form a
+    form button
+        background-color: rgba(17, 20, 22, 0.0)
         position: relative
         display: inline-block
         padding: 10px 20px
@@ -64,13 +67,13 @@
         overflow: hidden
         transition: .5s
         margin-top: 40px
-        letter-spacing: 4px
+        letter-spacing: 1px
         &:hover
             background: #03e9f4
             color: #fff
             border-radius: 5px
             box-shadow: 0 0 5px #03e9f4, 0 0 25px #03e9f4, 0 0 50px #03e9f4, 0 0 100px #03e9f4
-    a span
+    button span
         position: absolute
         display: block
         &:nth-child(1)
@@ -81,7 +84,6 @@
             background: linear-gradient(90deg, transparent, #03e9f4)
             animation: btn-anim1 1s linear infinite
 
-
 @keyframes btn-anim1
     0%
         left: -100%
@@ -89,7 +91,7 @@
     50%,100%
         left: 100%
 
-.login_box a span:nth-child(2)
+.login_box button span:nth-child(2)
     top: -100%
     right: 0
     width: 2px
@@ -105,7 +107,7 @@
     50%,100%
         top: 100%
 
-.login_box a span:nth-child(3)
+.login_box button span:nth-child(3)
     bottom: 0
     right: -100%
     width: 100%
@@ -121,7 +123,7 @@
     50%,100%
         right: 100%
 
-.login_box a span:nth-child(4)
+.login_box button span:nth-child(4)
     bottom: -100%
     left: 0
     width: 2px
@@ -136,3 +138,49 @@
 
     50%,100%
         bottom: 100%
+
+
+
+.container 
+  display: block;
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  user-select: none;
+
+.container input 
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+
+.checkmark 
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 17px;
+  width: 17px;
+  background-color: #EAF0F6;
+  border: 2px solid #33475B;
+  border-radius: 5px;
+
+.container input:checked ~ .checkmark 
+  background-color: #33475B;
+
+.checkmark:after 
+  content: "";
+  position: absolute;
+  display: none;
+
+.container input:checked ~ .checkmark:after 
+  display: block;
+
+.container .checkmark:after 
+  left: 3px;
+  width: 4px;
+  height: 8px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);

@@ -7,6 +7,7 @@ const { merge } = require("webpack-merge");
 const devServer = require("./webpack/devserver");
 const images = require("./webpack/images");
 const sass = require("./webpack/sass");
+const json = require("./webpack/json");
 const pug = require("./webpack/pug");
 const css = require("./webpack/css");
 
@@ -22,7 +23,8 @@ const productionConfig = merge([
       modal: [
         PATHS.source + "/scripts/hystmodal.min.js",
         PATHS.source + "/scripts/modal.js",
-        PATHS.source + "/scripts/tg.js",
+        PATHS.source + "/scripts/tg.js", //отправка с фронта
+        // PATHS.source + "/scripts/telegram.js",  //отправка с бэкэнда
       ],
     },
     output: {
@@ -51,6 +53,7 @@ const productionConfig = merge([
   sass(),
   css(),
   images(),
+  json(),
 ]);
 
 const developmentConfig = merge([productionConfig, devServer()]);

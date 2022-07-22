@@ -1,8 +1,8 @@
 //- https://codepen.io/soufiane-khalfaoui-hassani/pen/LYpPWda
 
 div(class='login_box')
-  h2 Login
-  form(id='tg')
+  h2 Оставить заявку
+  form(id='telegram_form')
     div(class='user_box')
       input(type='text' name='name' maxlength='20' required='')
       label Ваше имя
@@ -15,15 +15,12 @@ div(class='login_box')
     div(class='user_box')
       input(type='text' name='description' maxlength='80' required='')
       label Неисправность
-    div(class='message_success' id='success' style='display: none') 
-        h1 UUU---UUU
-    button(type='submit') Send
-    a(href='#') Отправить
+    div(class='checkbox')
+      label(class='container') Хочу чтобы мне перезвонили
+        input(type='checkbox' id="checkbox" name='feedback')
+        span(class='checkmark')
+    button(class="sendform_button" type='submit') Отправить
       span
       span
       span
       span
-      
-
-
-
