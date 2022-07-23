@@ -10,6 +10,7 @@ const sass = require("./webpack/sass");
 const json = require("./webpack/json");
 const pug = require("./webpack/pug");
 const css = require("./webpack/css");
+const babel = require("./webpack/babel");
 
 const PATHS = {
   source: path.join(__dirname, "source"),
@@ -26,6 +27,10 @@ const productionConfig = merge([
         PATHS.source + "/scripts/tg.js", //отправка с фронта
         // PATHS.source + "/scripts/telegram.js",  //отправка с бэкэнда
       ],
+      other: [
+        PATHS.source + "/scripts/scroll.js",
+        // PATHS.source + "/scripts/seamless_scroll_polyfill.js"
+      ]
     },
     output: {
       path: PATHS.build,
@@ -35,7 +40,7 @@ const productionConfig = merge([
       new HtmlWebpackPlugin({
         //Создаем страницу index.html
         filename: "index.html",
-        chunks: ["modal", "index"],
+        chunks: ["modal", "other", "index"],
         template: PATHS.source + "/index.pug",
         inject: "body",
       }),
@@ -54,6 +59,7 @@ const productionConfig = merge([
   css(),
   images(),
   json(),
+  // babel()
 ]);
 
 const developmentConfig = merge([productionConfig, devServer()]);

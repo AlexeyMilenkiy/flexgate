@@ -35,6 +35,9 @@ document.getElementById("telegram_form").addEventListener("submit", function (e)
           timer: 2000,
         });
         document.getElementById('telegram_form').reset();
+        if (document.querySelector('.hystmodal__close')) {
+          document.querySelector('.hystmodal__close').click()
+        }
       })
       .catch((err) => {
         console.warn(err);
