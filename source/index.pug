@@ -1,11 +1,26 @@
 doctype html
-html(lang="ru")
+html(lang='ru')
   head
     meta(charset="UTF-8")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
-    title Document
-    //- link(href="hystmodal.min.css")
+    title= title
+    //- script
+    //-   | let script_str = ''
+    //-   | let styles_str = ''
+    //-   | let scrypt_arr = ['hystmodal.js', 'modal.js', 'tg.js', 'scroll.js']
+    //-   | let styles_arr = ['style.scss', 'hystmodal.scss', ]
+    //-   | let head_box = document.querySelector('head')
+    //-   | let titile_text = head_box.getElementsByTagName('title')[0].innerText
+    //-   | console.log(head_box.getElementsByTagName('title')[0].innerText)
+    //-   | if (titile_text == 'Development')
+    //-   |   for (item of styles_arr)
+    //-   |     styles_str += `link(rel="stylesheet" href="${item}")<br>`
+    //-   |   head_box.innerHTML += styles_str
+    //-   |   for (item of scrypt_arr)
+      //- |     script_str += `script(src="/scrypts/${item}")<br>`
+      //- |     script_str += `<script>`src="/scrypts/${item}"`</script>`
+      //- |     head_box.innerHTML += script_str
   body 
     header 
       include parts/header.pug
@@ -120,7 +135,7 @@ html(lang="ru")
               li(class="single_block")
                 button(class="bn5") Buy Now
         //- section 
-          //- какие модели подходят и какой список услуг(это для SEO)
+        //- какие модели подходят и какой список услуг(это для SEO)
     footer 
       //- include parts/modal.pug
       //- include parts/form.pug

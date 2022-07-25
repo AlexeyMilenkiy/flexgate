@@ -1,11 +1,11 @@
-import qs from "qs";
 import axios from "axios";
 import swal from "sweetalert";
 
 const TOKEN = "1696539093:AAHN1_BbiBAbfcZ5fQK-CXcVCtQ8lqfKDiM";
 const CHAT_ID = "-1001387899416";
-const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
-// const success = document.getElementById("success");
+// const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
+const URI_API = "/telegram";
+
 
 document.getElementById("telegram_form").addEventListener("submit", function (e) {
     e.preventDefault();
@@ -19,16 +19,10 @@ document.getElementById("telegram_form").addEventListener("submit", function (e)
         console.log(this.feedback.checked);
         message += `\n<strong>ПЕРЕЗВОНИТЬ</strong>\n`;
     }
-    
-    axios
-      .post(URI_API, {
-        chat_id: CHAT_ID,
-        parse_mode: "html",
-        text: message,
-      })
-      .then((res) => {
-        // success.innerHTML = "Message send";
-        // success.style.display = "block";
+
+    axios.post(URI_API, { data: message })
+      .then((response) => {
+        console.log(response);
         swal({
           title: "Успешно отправлено!",
           icon: "success",
@@ -39,8 +33,8 @@ document.getElementById("telegram_form").addEventListener("submit", function (e)
           document.querySelector('.hystmodal__close').click()
         }
       })
-      .catch((err) => {
-        console.warn(err);
+      .catch((error) => {
+        console.warn(error);
         swal({
           title: "Произошла ошибка!",
           icon: "error",

@@ -1,57 +1,67 @@
-import swal from 'sweetalert';
+import swal from "sweetalert";
 
-const form = document.getElementById('telegram_form')
-//функция для захвата данных из тегов формы и синтеза JSON-обьекта 
+const form = document.getElementById("telegram_form");
+//функция для захвата данных из тегов формы и синтеза JSON-обьекта
 function toJSONString(form) {
-  var obj = {}
-  var elements = form.querySelectorAll('input, select, textarea')
+  var obj = {};
+  var elements = form.querySelectorAll("input, select, textarea");
   for (var i = 0; i < elements.length; ++i) {
-    var element = elements[i]
-    var name = element.name
-    var value = element.value
+    var element = elements[i];
+    var name = element.name;
+    var value = element.value;
     if (name) {
-      obj[ name ] = value
+      obj[name] = value;
     }
   }
-  return JSON.stringify(obj)
+  return JSON.stringify(obj);
 }
+
 if (form) {
-  form.addEventListener('submit', event => {
-    event.preventDefault()
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
     //получаем данные из формы
-    const json = toJSONString(form)
-    // console.log(json);
+    const json = toJSONString(form);
     //создаем соединение
-    const formReq = new XMLHttpRequest()
-    formReq.open('POST', '/telegram', true)
     ///////////////////////////////////
     /////////////SweetAlert//////////
     ///////////////////////////////////
     //обрабатываем ответ сервера
-    formReq.onload = function(oEvent) {
-      if (formReq.status === 200) {
+    xmlhttp.onload = function (oEvent) {
+      console.log("xmlhttp.status", xmlhttp.status, "oEvent", oEvent);
+      if (xmlhttp.status === 200) {
         swal({
-          title: 'Успешно отправлено!',
-          icon: 'success',
-          timer: 2000
-        })
+          title: "Успешно отправлено!",
+          icon: "success",
+          timer: 2000,
+        }),
+          document.getElementById("telegram_form").reset();
+        if (document.querySelector(".hystmodal__close")) {
+          document.querySelector(".hystmodal__close").click();
+        }
         // document.querySelector('.sa-success').style.display = 'block'
         // document.querySelector('.sa-button-container').style.opacity = '0'
       }
-      if (formReq.status !== 200) {
+      if (xmlhttp.status !== 200) {
         swal({
-          title: 'Произошла ошибка!',
-          icon: 'error',
-          timer: 2000
-        })
+          title: "Произошла ошибка!",
+          icon: "error",
+          timer: 2000,
+        }),
+          document.getElementById("telegram_form").reset();
+        if (document.querySelector(".hystmodal__close")) {
+          document.querySelector(".hystmodal__close").click();
+        }
         // document.querySelector('.sa-error').style.display = 'block'
         // document.querySelector('.sa-button-container').style.opacity = '0'
       }
-    }
+    };
     ////////////////////////////
     ////////////////////////////
-    formReq.setRequestHeader('Content-Type', 'application/json')
+    // xmlhttp.setRequestHeader('Content-Type', 'application/json')
     //отправляем
-    formReq.send(json)
-  })
+    // xmlhttp.send(json)
+  });
+  // .finally(() => {
+  //   console.log("Final");
+  // });
 }

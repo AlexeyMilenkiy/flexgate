@@ -25,11 +25,9 @@ const productionConfig = merge([
         PATHS.source + "/scripts/hystmodal.min.js",
         PATHS.source + "/scripts/modal.js",
         PATHS.source + "/scripts/tg.js", //отправка с фронта
-        // PATHS.source + "/scripts/telegram.js",  //отправка с бэкэнда
       ],
       other: [
         PATHS.source + "/scripts/scroll.js",
-        // PATHS.source + "/scripts/seamless_scroll_polyfill.js"
       ]
     },
     output: {
@@ -61,6 +59,8 @@ const productionConfig = merge([
   json(),
   // babel()
 ]);
+
+
 
 const developmentConfig = merge([productionConfig, devServer()]);
 
