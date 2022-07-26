@@ -3,10 +3,11 @@
 *.iml
 
 yarn.lock
+package-lock.json
 
 # dependencies
 /node_modules
-.vscode
+/.vscode
 .npmrc
 # testing
 /coverage

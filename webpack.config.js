@@ -13,8 +13,8 @@ const css = require("./webpack/css");
 const babel = require("./webpack/babel");
 
 const PATHS = {
-  source: path.join(__dirname, "source"),
-  build: path.join(__dirname, "public"),
+  source: path.join(__dirname, "client"),
+  build: path.join(__dirname, "build"),
 };
 
 const productionConfig = merge([
@@ -24,11 +24,9 @@ const productionConfig = merge([
       modal: [
         PATHS.source + "/scripts/hystmodal.min.js",
         PATHS.source + "/scripts/modal.js",
-        PATHS.source + "/scripts/tg.js", //отправка с фронта
+        PATHS.source + "/scripts/form.js", //отправка с фронта
       ],
-      other: [
-        PATHS.source + "/scripts/scroll.js",
-      ]
+      other: [PATHS.source + "/scripts/scroll.js"],
     },
     output: {
       path: PATHS.build,
@@ -59,8 +57,6 @@ const productionConfig = merge([
   json(),
   // babel()
 ]);
-
-
 
 const developmentConfig = merge([productionConfig, devServer()]);
 

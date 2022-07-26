@@ -1,51 +1,36 @@
-var express = require('express');
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const logger = require("morgan");
+const cors = require("cors");
+const pagesRouter = require("./routes/pages");
+const restRouter = require("./routes/rest");
 
-var indexRouter = require('./routes/index');
-var app = express();
+const app = express();
+app.use(cors());
+app.use(logger("dev"));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(express.static(path.join(__dirname, "build")));
 
-const path = require('path');
+app.use("/", pagesRouter);
 
+app.use("/api/v1", restRouter);
 
-app.use(express.static(path.join(__dirname, 'public')));
+// catch 404 and forward to error handler
+app.use(function (req, res, next) {
+  next(createError(404));
+});
 
- 
-app.use('/', indexRouter);
-app.use('/telegram', indexRouter);
- 
-app.listen(3000);
+// error handler
+app.use(function (err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get("env") === "development" ? err : {};
 
+  // render the error page
+  res.status(err.status || 500);
+  res.render("error");
+});
 
-
-
-// const hostname = "127.0.0.1";
-// const port = 3000;
-
-// const path = require('path');
-// const express = require("express");
-// const app = express();
-
-// const router = require('./routes/router');
-// app.use('/', router);
-
-// // app.set('views', './source')
-// // app.set('view engine', 'pug')
-
-// app.use(express.static(path.join(__dirname, 'public')));
-// // app.get('/', (req, res) => {
-// //   res.send('Hello Worlllld!')
-// //   res.render('index');
-
-// // })
-
-
-
-// // app.get('/', function (req, res) {
-// //   res.render('index', { 
-// //     title: 'Hey', 
-// //     message: 'Hello there!'});
-// // });
-
-
-// app.listen(port, hostname, () => {
-//   console.log(`Server running at http://${hostname}:${port}/`);
-// });
+module.exports = app;
