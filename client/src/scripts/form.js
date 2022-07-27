@@ -12,8 +12,8 @@ const sendData = async (data) => {
       icon: 'success',
       timer: 2000,
     });
-    // form.reset();
-    // closeModal && closeModal.click();
+    form.reset();
+    closeModal && closeModal.click();
   } catch (error) {
     swal({
       title: 'Произошла ошибка!',
