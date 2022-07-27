@@ -47,7 +47,6 @@ const productionConfig = {
     rules: [
       {
         test: /\.css$/i,
-        // include: paths,
         include: PATHS.source + '/styles',
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
         // use: ["style-loader", "css-loader"],
