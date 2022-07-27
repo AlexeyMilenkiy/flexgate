@@ -1,19 +1,18 @@
 #idea
 .idea
 *.iml
+.vscode
 
 yarn.lock
-package-lock.json
+.env
 
 # dependencies
-/node_modules
-/.vscode
-.npmrc
-# testing
-/coverage
+node_modules
+package-lock.json
+
 
 # production
-/build
+build
 /dist/*
 /dist/assets/*
 /packages/*/dist/*
