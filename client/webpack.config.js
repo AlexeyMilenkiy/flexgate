@@ -14,7 +14,7 @@ const babel = require('./webpack/babel');
 
 const PATHS = {
   source: path.join(__dirname, 'src'),
-  build: path.join(__dirname, 'build'),
+  build: path.join(__dirname, '../build'),
 };
 
 const productionConfig = merge([
