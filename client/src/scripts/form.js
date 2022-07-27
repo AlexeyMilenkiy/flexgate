@@ -1,23 +1,23 @@
-import { axiosInstance } from "./config";
-import swal from "sweetalert";
+import { axiosInstance } from './axios';
+import swal from 'sweetalert';
 
-const form = document.getElementById("telegram_form");
-const closeModal = document.querySelector(".hystmodal__close");
+const form = document.getElementById('telegram_form');
+const closeModal = document.querySelector('.hystmodal__close');
 
 const sendData = async (data) => {
   try {
-    await axiosInstance.post("/sendForm", data);
+    await axiosInstance.post('/sendForm', data);
     swal({
-      title: "Успешно отправлено!",
-      icon: "success",
+      title: 'Успешно отправлено!',
+      icon: 'success',
       timer: 2000,
     });
     // form.reset();
     // closeModal && closeModal.click();
   } catch (error) {
     swal({
-      title: "Произошла ошибка!",
-      icon: "error",
+      title: 'Произошла ошибка!',
+      icon: 'error',
       timer: 2000,
     });
   }
@@ -35,4 +35,4 @@ const onSubmitForm = function (e) {
   sendData(data);
 };
 
-form.addEventListener("submit", onSubmitForm);
+form.addEventListener('submit', onSubmitForm);

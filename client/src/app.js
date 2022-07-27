@@ -25,13 +25,14 @@ import './images/logos/telegram.svg';
 import './images/logos/whatsapp.svg';
 import './images/yandex_maps.jpg';
 import './images/yandex_maps.webp';
-
-// import "./styles/hystmodal.min.css";
+import './scripts/form';
+import './scripts/modal';
 
 console.log('Hello...');
 console.log('mode', process.env.NODE_ENV);
 
 let elements = document.querySelectorAll("a[href^='#'");
+console.log('elements :>> ', elements);
 for (let i = 0; i < elements.length; i++) {
   elements[i].classList.remove('active');
   elements[i].onclick = function (event) {

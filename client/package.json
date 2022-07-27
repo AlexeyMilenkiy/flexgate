@@ -4,9 +4,8 @@
   "private": true,
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --node-env=development --mode development",
-    "build": "webpack --node-env=production --mode production",
-    "serv": "static build"
+    "dev": "webpack serve --node-env=development --mode development",
+    "build": "webpack --node-env=production --mode production"
   },
   "devDependencies": {
     "@babel/core": "^7.18.9",
@@ -36,6 +35,9 @@
   },
   "dependencies": {
     "axios": "^0.27.2",
+    "hystmodal": "^0.5.1",
+    "i": "^0.3.7",
+    "npm": "^8.15.0",
     "sweetalert": "^2.1.2"
   }
 }
