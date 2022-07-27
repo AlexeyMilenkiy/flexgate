@@ -19,7 +19,9 @@ const devConfig = {
 };
 
 const productionConfig = {
-  entry: PATHS.source + '/app.js',
+  entry: {
+    index: PATHS.source + '/app.js',
+  },
   output: {
     path: PATHS.build,
     filename: 'bundle.[chunkhash].js',

@@ -27,6 +27,7 @@ import './images/yandex_maps.jpg';
 import './images/yandex_maps.webp';
 import './scripts/form';
 import './scripts/modal';
+import './scripts/scroll';
 
 console.log('Hello...');
 console.log('mode', process.env.NODE_ENV);
