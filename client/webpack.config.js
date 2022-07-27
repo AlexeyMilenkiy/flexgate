@@ -4,21 +4,14 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { merge } = require('webpack-merge');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const PATHS = {
   source: path.join(__dirname, 'src'),
   build: path.join(__dirname, '../build'),
 };
 
-const devConfig = {
-  devServer: {
-    open: true,
-    port: 3000,
-    hot: true,
-  },
-};
-
-const productionConfig = {
+const commonConfig = {
   entry: {
     index: PATHS.source + '/app.js',
   },
@@ -60,7 +53,6 @@ const productionConfig = {
       {
         test: /\.(svg|png|jpg|jpeg|gif|webp)$/i,
         loader: 'file-loader',
-        // type: 'asset/resource',
         options: {
           name: '[name].[ext]',
         },
@@ -85,7 +77,35 @@ const productionConfig = {
   },
 };
 
-const developmentConfig = merge(productionConfig, devConfig);
+const devConfig = {
+  devServer: {
+    open: true,
+    port: 3000,
+    hot: true,
+  },
+};
+
+const prodConfig = {
+  optimization: {
+    usedExports: true,
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        extractComments: true,
+        terserOptions: {
+          compress: true,
+          mangle: true,
+          module: true,
+        },
+      }),
+      new MiniCssExtractPlugin(),
+    ],
+  },
+  plugins: [new MiniCssExtractPlugin()],
+};
+
+const developmentConfig = merge(commonConfig, devConfig);
+const productionConfig = merge(commonConfig, prodConfig);
 
 module.exports = function (env, argv) {
   if (argv.nodeEnv === 'production') {

@@ -38,6 +38,7 @@
     "hystmodal": "^0.5.1",
     "i": "^0.3.7",
     "npm": "^8.15.0",
-    "sweetalert": "^2.1.2"
+    "sweetalert": "^2.1.2",
+    "terser-webpack-plugin": "^5.3.3"
   }
 }
