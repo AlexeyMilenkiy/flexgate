@@ -1,6 +1,5 @@
 import createError from 'http-errors';
 import express from 'express';
-import { join } from 'path';
 import logger from 'morgan';
 import cors from 'cors';
 import { __dirname } from './utils/dirname.js';
@@ -18,17 +17,13 @@ app.use('/', pagesRouter);
 
 app.use('/api/v1', restRouter);
 
-app.use(function (_, __, next) {
+app.use((_, __, next) => {
   next(createError(404));
 });
 
-// error handler
-app.use(function (err, req, res, _) {
-  // set locals, only providing error in development
+app.use((err, req, res, _) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-  // render the error page
   res.status(err.status || 500);
   res.render('error');
 });
