@@ -49,7 +49,6 @@ const productionConfig = {
         test: /\.css$/i,
         include: PATHS.source + '/styles',
         use: [MiniCssExtractPlugin.loader, 'css-loader'],
-        // use: ["style-loader", "css-loader"],
       },
       {
         test: /\.js$/,
@@ -81,7 +80,6 @@ const productionConfig = {
         test: /\.s[ac]ss$/,
         include: PATHS.source + '/styles',
         use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader'],
-        // use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },
