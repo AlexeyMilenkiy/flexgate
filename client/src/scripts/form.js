@@ -13,7 +13,7 @@ const sendData = async (data) => {
       timer: 2000,
     });
     form.reset();
-    closeModal && closeModal.click();
+    closeModal?.click();
   } catch (error) {
     swal({
       title: 'Произошла ошибка!',

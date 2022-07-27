@@ -107,11 +107,5 @@ const prodConfig = {
 const developmentConfig = merge(commonConfig, devConfig);
 const productionConfig = merge(commonConfig, prodConfig);
 
-module.exports = function (env, argv) {
-  if (argv.nodeEnv === 'production') {
-    return productionConfig;
-  }
-  if (argv.nodeEnv === 'development') {
-    return developmentConfig;
-  }
-};
+module.exports = (_, argv) =>
+  argv.nodeEnv === 'production' ? productionConfig : developmentConfig;
